@@ -52,4 +52,21 @@ class DirectorsController < ApplicationController
 
     render({ :template => "director_templates/index" })
   end
+
+  def update
+    the_id = params.fetch("path_id")
+
+    matching_directors = Director.where({ :id => the_id })
+    @the_director = matching_directors.at(0)
+      
+
+    @the_director.name = params.fetch("name")
+    @the_director.dob = params.fetch("dob")
+    @the_director.bio = params.fetch("bio")
+    @the_director.image = params.fetch("image")
+
+    @the_director.save
+
+    render({ :template => "director_templates/show" })
+  end
 end
