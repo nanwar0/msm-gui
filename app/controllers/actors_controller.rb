@@ -47,5 +47,17 @@ class ActorsController < ApplicationController
 
     render({ :template => "actor_templates/show" })
   end
+
+  def delete
+    the_id = params.fetch("path_id")
+
+    matching_actors = Actor.where({ :id => the_id })
+    @the_actor = matching_actors.at(0)
+
+    @the_actor.destroy
+
+    redirect_to("/actors")
+  end
+
   
 end
