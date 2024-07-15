@@ -45,7 +45,7 @@ class ActorsController < ApplicationController
 
     @the_actor.save
 
-    render({ :template => "actor_templates/show" })
+    redirect_to("/actors/" + the_id)
   end
 
   def delete

@@ -49,7 +49,7 @@ class MoviesController < ApplicationController
 
     @the_movie.save
 
-    render({ :template => "movie_templates/show" })
+    redirect_to("/movies/" + the_id)
   end
 
   def delete

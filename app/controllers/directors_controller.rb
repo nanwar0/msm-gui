@@ -67,7 +67,7 @@ class DirectorsController < ApplicationController
 
     @the_director.save
 
-    render({ :template => "director_templates/show" })
+    redirect_to("/directors/" + the_id)
   end
 
   def delete
