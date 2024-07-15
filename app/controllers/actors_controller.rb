@@ -14,4 +14,20 @@ class ActorsController < ApplicationController
       
     render({ :template => "actor_templates/show" })
   end
+
+  def add
+    x = Actor.new
+
+    x.name = params.fetch("name")
+    x.dob = params.fetch("dob")
+    x.bio = params.fetch("bio")
+    x.image = params.fetch("image")
+
+    x.save
+
+    matching_actors = Actor.all
+    @list_of_actors = matching_actors.order({ :created_at => :desc })
+
+    render({ :template => "actor_templates/index" })
+  end
 end
